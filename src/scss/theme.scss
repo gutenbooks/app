@@ -1,0 +1,8 @@
+// Override default variables before the import
+//
+// override bootstrap and implement custom theme in partials which are included here.
+// Ex. $body-bg: #000;
+// Ex. @import "./buttons";
+
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';

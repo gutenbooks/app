@@ -1,25 +1,44 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
+import { Navbar, Nav } from 'react-bootstrap';
 
-function App() {
+import Home from './pages/Home';
+import About from './pages/About';
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+       <Navbar bg="light" expand="lg">
+         <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+         <Navbar.Collapse id="basic-navbar-nav">
+           <Nav className="ml-auto">
+             <Nav.Link href="/">Home</Nav.Link>
+             <Nav.Link href="/about">About</Nav.Link>
+           </Nav>
+         </Navbar.Collapse>
+       </Navbar>
+
+         {/*
+           A <Switch> looks through all its children <Route>
+           elements and renders the first one whose path
+           matches the current URL. Use a <Switch> any time
+           you have multiple routes, but you want only one
+           of them to render at a time
+         */}
+         <Switch>
+           <Route exact path="/">
+             <Home />
+           </Route>
+           <Route path="/about">
+             <About />
+           </Route>
+         </Switch>
+     </Router>
   );
 }
 
