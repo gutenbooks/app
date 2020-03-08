@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+    app:
+      image: gutenberg-org/app
+      build: .
+      command: npm start
+      environment:
+        - REACT_APP_API_DOMAIN=https://www.gutenberg.org
+      volumes:
+        - ./src:/app/src/
+        - ./public:/app/public
+        - ./tsconfig.json:/app/tsconfig.json
+      ports:
+        - 3000:3000

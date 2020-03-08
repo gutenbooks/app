@@ -1,5 +1,19 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Dev Setup
+
+This project ships with a standard docker environment. Make sure you have Docker installed on your machine.
+
+Copy the local env file and fill out any missing variables:
+```
+cp .env.default .env
+```
+
+Spin up the application:
+```
+docker-compose up
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -42,3 +56,9 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+## TODO
+
+- Investigate [Goodreads API](https://www.goodreads.com/api/index)
+- Investigate [Openlibrary.org Metadata](https://openlibrary.org/developers/api)
