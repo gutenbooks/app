@@ -1,6 +1,6 @@
 {
   "name": "gutenberg-org",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
@@ -32,7 +32,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "version": "npm run changelog && git add CHANGELOG.md",
+    "postversion": "git push && git push --tags",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,5 +51,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "conventional-changelog-cli": "^2.0.31"
   }
 }
