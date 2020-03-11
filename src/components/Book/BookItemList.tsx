@@ -19,7 +19,7 @@ const BookItemList: React.SFC<BookItemListProps> = ({ books, onClickBook, onClic
         books.map((book: Book) => {
           return (
             <Col
-              key={book.title}
+              key={`book-item-${book.id}`}
             >
               <BookItem
                 book={book}

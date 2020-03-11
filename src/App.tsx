@@ -7,6 +7,7 @@ import {
 import { Navbar, Nav } from 'react-bootstrap';
 
 import Home from './pages/Home';
+import Search from './pages/Search';
 import About from './pages/About';
 import BooksShow from './pages/BooksShow';
 
@@ -37,6 +38,9 @@ const App: React.FC = () => {
            </Route>
            <Route exact path="/books/:id">
              <BooksShow />
+           </Route>
+           <Route path="/search">
+             <Search />
            </Route>
            <Route path="/about">
              <About />

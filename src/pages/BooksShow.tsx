@@ -1,19 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
+import ApiClient from '../utils/ApiClient';
 import BookShow from '../components/Book/BookShow';
-
-import books from '../mocks/books';
 
 const BooksShow: React.FC = () => {
 
   const { id } = useParams();
+  const [book, setBook] = useState();
 
-  if (!id) {
-    return <h1>404</h1>;
-  }
-
-  const book = books.find(book => book.id === parseInt(id, 10))
+  useEffect(() => {
+    ApiClient.get(`/books/${id}`)
+      .then(({data}) => {
+        setBook(data);
+      })
+    ;
+  }, []);
 
   if (!book) {
     return <h1>404</h1>;

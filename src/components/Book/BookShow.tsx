@@ -19,8 +19,9 @@ const getAuthors = (book: Book) => {
   })
 }
 
-const BookShow: React.SFC<BookShowInterface> = ({ book}: BookShowInterface) => {
+const BookShow: React.SFC<BookShowInterface> = ({ book }: BookShowInterface) => {
   const authors = getAuthors(book);
+  console.log('**** book', book);
 
   return (
     <Row>
