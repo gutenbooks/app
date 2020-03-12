@@ -9,7 +9,7 @@ import { Navbar, Nav } from 'react-bootstrap';
 import Home from './pages/Home';
 import Search from './pages/Search';
 import About from './pages/About';
-import BooksShow from './pages/BooksShow';
+import BookShow from './pages/BookShow';
 
 const App: React.FC = () => {
   return (
@@ -37,7 +37,7 @@ const App: React.FC = () => {
              <Home />
            </Route>
            <Route exact path="/books/:id">
-             <BooksShow />
+             <BookShow />
            </Route>
            <Route path="/search">
              <Search />

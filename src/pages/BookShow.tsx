@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import ApiClient from '../utils/ApiClient';
 import BookShow from '../components/Book/BookShow';
 
-const BooksShow: React.FC = () => {
+const BookShowPage: React.FC = () => {
 
   const { id } = useParams();
   const [book, setBook] = useState();
@@ -28,4 +28,4 @@ const BooksShow: React.FC = () => {
   );
 }
 
-export default BooksShow;
+export default BookShowPage;
