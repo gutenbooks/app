@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { parseUrl } from 'query-string';
+import { Button } from 'react-bootstrap';
+import { parseUrl, stringify } from 'query-string';
 
 import ApiClient from '../utils/ApiClient';
 import Book from '../models/Book';
@@ -9,6 +10,7 @@ import SearchFormInterface from '../models/SearchFormInterface'
 import BookItemList from '../components/Book/BookItemList';
 import SearchControl from '../components/Search/SearchControl';
 import Loader from '../components/Loader';
+// import Paginator from '../components/Paginator';
 import ClickableBook from '../types/ClickableBook';
 import ClickableContributor from '../types/ClickableContributor';
 import OnSearchCallback from '../types/OnSearchCallback';
@@ -20,7 +22,10 @@ const Search: React.FC = () => {
   const result = parseUrl(window.location.search);
   const { query: q, taxons: t } = result.query;
   const history = useHistory();
-  const [books, setBooks] = useState([]);
+  const [count, setCount] = useState();
+  const [page, setPage] = useState(1);
+  const [hasNext, setHasNext] = useState();
+  const [books, setBooks] = useState<any[]>([]);
   const [query, setQuery] = useState(q);
   const [taxons, setTaxons] = useState(t);
   const [loading, setLoading] = useState(false);
@@ -46,16 +51,32 @@ const Search: React.FC = () => {
     setQuery(form.query);
   };
 
+  const onLoadMore = (e: any) => {
+    e.preventDefault();
+    setPage(page + 1);
+  }
+
   useEffect(() => {
     setLoading(true);
-    ApiClient.get(`/books/?search=${encodeURIComponent(query as string)}`)
+    const params = stringify({
+      page: page,
+      search: query as string,
+    });
+
+    ApiClient.get(`/books/?${params}`)
       .then(({data}) => {
-        console.log(data);
-        setBooks(data.results);
+        setHasNext(data.next ? true : false);
+        setCount(data.count);
+
+        if (data.results) {
+          const merged: any[] = [...books, ...data.results];
+          setBooks(merged);
+        }
+
         setLoading(false);
       })
     ;
-  }, [query, taxons])
+  }, [query, taxons, page])
 
   if (!query && books.length == 0) {
     return <h1>nothing found</h1>
@@ -70,13 +91,30 @@ const Search: React.FC = () => {
       />
 
       <div className="container mt-4">
-        <Loader isLoading={loading}>
+        <Loader isLoading={loading && page === 1}>
+          <p className="small text-muted">{count} total results</p>
           <BookItemList
             books={books}
             onClickBook={onClickBook}
             onClickAuthor={onClickAuthor}
           />
         </Loader>
+
+        { hasNext === true ?
+          (
+            <div className="text-center my-4">
+              <Loader isLoading={loading && page >= 1}>
+                <Button
+                  variant="outline-primary"
+                  onClick={onLoadMore}
+                >
+                  Load More
+                </Button>
+              </Loader>
+            </div>
+          )
+          : null
+        }
       </div>
     </div>
   );
