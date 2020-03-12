@@ -48,6 +48,9 @@ const Search: React.FC = () => {
     if (form.taxons) {
       setTaxons(form.taxons.map((t) => t.toString()));
     }
+
+    setBooks([]);
+    setPage(1);
     setQuery(form.query);
   };
 
