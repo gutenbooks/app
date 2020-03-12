@@ -15,7 +15,7 @@ const App: React.FC = () => {
   return (
     <Router>
        <Navbar bg="light" expand="lg">
-         <Navbar.Brand href="#home">Gutenberg</Navbar.Brand>
+         <Navbar.Brand href="/">Gutenberg</Navbar.Brand>
          <Navbar.Toggle aria-controls="basic-navbar-nav" />
          <Navbar.Collapse id="basic-navbar-nav">
            <Nav className="ml-auto">
