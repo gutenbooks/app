@@ -1,11 +1,25 @@
 import React from 'react';
 
-const Loader: React.FC = () => {
-  return (
-    <div>
-      <b>loading...</b>
-    </div>
-  );
+interface LoaderInterface {
+  children: any;
+  isLoading: boolean;
+}
+
+const Loader: React.SFC<LoaderInterface> = ({children, isLoading}) => {
+
+  if (isLoading) {
+    return (
+      <div>
+        <b>loading...</b>
+      </div>
+    );
+  } else {
+    return (
+      <>
+        {children}
+      </>
+    );
+  }
 }
 
 export default Loader;

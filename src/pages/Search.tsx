@@ -70,21 +70,13 @@ const Search: React.FC = () => {
       />
 
       <div className="container mt-4">
-
-        {
-          loading === true ?
-            (
-              <Loader />
-            )
-            :
-            (
-              <BookItemList
-                books={books}
-                onClickBook={onClickBook}
-                onClickAuthor={onClickAuthor}
-              />
-            )
-        }
+        <Loader isLoading={loading}>
+          <BookItemList
+            books={books}
+            onClickBook={onClickBook}
+            onClickAuthor={onClickAuthor}
+          />
+        </Loader>
       </div>
     </div>
   );

@@ -59,21 +59,14 @@ const Home: React.FC = () => {
       />
 
       <div className="mt-3">
-        {
-          loading === true ?
-            (
-              <Loader />
-            )
-            :
-            (
-              <BookCarousel
-                title="Popular"
-                books={popular}
-                onClickBook={onClickBook}
-                onClickAuthor={onClickAuthor}
-              />
-            )
-        }
+        <Loader isLoading={loading}>
+          <BookCarousel
+            title="Popular"
+            books={popular}
+            onClickBook={onClickBook}
+            onClickAuthor={onClickAuthor}
+          />
+        </Loader>
       </div>
     </div>
   );
