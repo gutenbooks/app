@@ -10,7 +10,6 @@ import SearchFormInterface from '../models/SearchFormInterface'
 import BookItemList from '../components/Book/BookItemList';
 import SearchControl from '../components/Search/SearchControl';
 import Loader from '../components/Loader';
-// import Paginator from '../components/Paginator';
 import ClickableBook from '../types/ClickableBook';
 import ClickableContributor from '../types/ClickableContributor';
 import OnSearchCallback from '../types/OnSearchCallback';
@@ -73,6 +72,15 @@ const Search: React.FC = () => {
       page: 1,
       query: form.query,
       taxons: tx,
+    });
+
+    // update the query params
+    history.push({
+      pathname: '/search',
+      search: `?${stringify({
+        query: form.query,
+        taxons: tx,
+      })}`,
     });
   };
 
