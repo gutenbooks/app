@@ -120,7 +120,7 @@ const Search: React.FC = () => {
   }
 
   return (
-    <div className="container mt-3">
+    <div className="container">
       <SearchControl
         defaultQuery={context.query ? context.query as string : ''}
         taxonomies={taxonomies}

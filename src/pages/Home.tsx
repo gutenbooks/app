@@ -52,7 +52,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="container mt-3">
+    <div className="container">
       <SearchControl
         taxonomies={taxonomies}
         onSearch={onSearch}

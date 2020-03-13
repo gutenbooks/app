@@ -14,15 +14,17 @@ import BookShow from './pages/BookShow';
 const App: React.FC = () => {
   return (
     <Router>
-       <Navbar bg="light" expand="lg">
-         <Navbar.Brand href="/">Gutenberg</Navbar.Brand>
-         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-         <Navbar.Collapse id="basic-navbar-nav">
-           <Nav className="ml-auto">
-             <Nav.Link href="/">Home</Nav.Link>
-             <Nav.Link href="/about">About</Nav.Link>
-           </Nav>
-         </Navbar.Collapse>
+       <Navbar bg="light" expand="lg" className="mb-3">
+          <div className="container">
+            <Navbar.Brand href="/">Gutenberg</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="ml-auto">
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/about">About</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+         </div>
        </Navbar>
 
          {/*
