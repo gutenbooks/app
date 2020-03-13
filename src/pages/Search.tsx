@@ -17,20 +17,36 @@ import OnSearchCallback from '../types/OnSearchCallback';
 
 import taxonomies from '../mocks/taxonomies';
 
+interface SearchContext {
+  page: number;
+  query: string;
+  taxons?: string[];
+}
+
 const Search: React.FC = () => {
 
   const result = parseUrl(window.location.search);
-  const { query: q, taxons: t } = result.query;
+  const { query, taxons } = result.query;
+
+  let t: string[] = [];
+  if (taxons) {
+    t = taxons as string[];
+  }
+
   const history = useHistory();
+
+  const [context, setContext] = useState<SearchContext>({
+    page: 1,
+    query: query as string,
+    taxons: t,
+  });
+
   const [count, setCount] = useState();
-  const [page, setPage] = useState(1);
   const [hasNext, setHasNext] = useState();
   const [books, setBooks] = useState<any[]>([]);
-  const [query, setQuery] = useState(q);
-  const [taxons, setTaxons] = useState(t);
   const [loading, setLoading] = useState(false);
 
-  if (!query) {
+  if (!context.query) {
     console.log('No query specified, redirecting to home.');
     history.push(`/`);
   }
@@ -45,25 +61,35 @@ const Search: React.FC = () => {
   };
 
   const onSearch: OnSearchCallback = (form: SearchFormInterface) => {
+
+    let tx: string[] = [];
     if (form.taxons) {
-      setTaxons(form.taxons.map((t) => t.toString()));
+      tx = form.taxons.map((t) => t.toString());
     }
 
     setBooks([]);
-    setPage(1);
-    setQuery(form.query);
+    setContext({
+      ...context,
+      page: 1,
+      query: form.query,
+      taxons: tx,
+    });
   };
 
   const onLoadMore = (e: any) => {
     e.preventDefault();
-    setPage(page + 1);
+
+    setContext({
+      ...context,
+      page: context.page + 1,
+    });
   }
 
   useEffect(() => {
     setLoading(true);
     const params = stringify({
-      page: page,
-      search: query as string,
+      page: context.page,
+      search: context.query as string,
     });
 
     ApiClient.get(`/books/?${params}`)
@@ -79,22 +105,22 @@ const Search: React.FC = () => {
         setLoading(false);
       })
     ;
-  }, [query, taxons, page])
+  }, [context])
 
-  if (!query && books.length == 0) {
+  if (!context.query && books.length == 0) {
     return <h1>nothing found</h1>
   }
 
   return (
     <div className="container mt-3">
       <SearchControl
-        defaultQuery={query ? query as string : ''}
+        defaultQuery={context.query ? context.query as string : ''}
         taxonomies={taxonomies}
         onSearch={onSearch}
       />
 
       <div className="container mt-4">
-        <Loader isLoading={loading && page === 1}>
+        <Loader isLoading={loading && context.page === 1}>
           <p className="small text-muted">{count} total results</p>
           <BookItemList
             books={books}
@@ -106,7 +132,7 @@ const Search: React.FC = () => {
         { hasNext === true ?
           (
             <div className="text-center my-4">
-              <Loader isLoading={loading && page >= 1}>
+              <Loader isLoading={loading && context.page >= 1}>
                 <Button
                   variant="outline-primary"
                   onClick={onLoadMore}
