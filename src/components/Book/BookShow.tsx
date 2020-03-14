@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 
+import BookFormats from './BookFormats';
 import BookImage from './BookImage';
 import Book from '../../models/Book';
 import ContributionType from '../../models/ContributionType';
@@ -44,6 +45,8 @@ const BookShow: React.SFC<BookShowInterface> = ({ book }: BookShowInterface) => 
             })
           }
         </p>
+
+        <BookFormats id={book.id} formats={book.formats} />
       </Col>
       <Col xs={12} className="mt-4">
         <p>

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import BookImage from './BookImage';
+import BookFormats from './BookFormats';
 import Book from '../../models/Book';
 import Contributor from '../../models/Contributor';
 import ContributionType from '../../models/ContributionType';
@@ -41,7 +42,7 @@ const BookItem: React.SFC<BookItemInterface> = ({ book, onClickBook, onClickAuth
   const authors = getAuthors(book);
 
   return (
-    <div className="text-center">
+    <div className="text-center mb-3">
       <button className="btn btn-link" onClick={handleClickBook(onClickBook, book)}>
         <BookImage book={book} />
         <h6 className="mt-2">{book.title}</h6>
@@ -63,6 +64,7 @@ const BookItem: React.SFC<BookItemInterface> = ({ book, onClickBook, onClickAuth
           })
         }
       </p>
+      <BookFormats id={book.id} formats={book.formats} />
     </div>
   );
 }

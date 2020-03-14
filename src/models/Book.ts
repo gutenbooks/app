@@ -8,7 +8,7 @@ interface Book {
   subtitle?: string;
   description: string;
   contributions: Contribution[];
-  // formats: Format[];
+  formats: Format[];
 }
 
 export default Book;

@@ -1,9 +1,9 @@
 enum FormatType {
-    epub,
-    mobi,
-    text,
-    html,
-    pdf,
+    epub = 'EPUB',
+    kindle = 'Kindle',
+    text = 'Plain Text',
+    html = 'HTML',
+    pdf = 'PDF',
 }
 
 export default FormatType;
