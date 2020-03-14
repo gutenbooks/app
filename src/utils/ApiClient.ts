@@ -15,16 +15,18 @@ const config = {
 // create a custon axios instance
 const client: AxiosInstance = axios.create(config);
 
+const bookShowRegex = /^\/books\/[\d]+[/]?$/;
+const bookIndexRegex = /^\/books[/]?/;
+
 // ////////////////////////////
 // configure interceptors
 // ////////////////////////////
 // request logger (for debugging purposes)
 client.interceptors.response.use((response) => {
-
   if (response.config.url) {
-    if (/^\/books\/[\d]+[\/]?$/.test(response.config.url)) {
+    if (bookShowRegex.test(response.config.url)) {
       response.data = bookMapper(response.data);
-    } else if (/^\/books[\/]?/.test(response.config.url)) {
+    } else if (bookIndexRegex.test(response.config.url)) {
       response.data.results = response.data.results.map(bookMapper);
     }
   }

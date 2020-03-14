@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { parseUrl, stringify } from 'query-string';
 
@@ -51,8 +51,7 @@ const Search: React.FC = () => {
   }
 
   const onClickBook: ClickableBook = (book: Book) => {
-    console.log('clicked book', book);
-    // history.push(`/books/${book.id}`);
+    history.push(`/books/${book.id}`);
   };
   const onClickAuthor: ClickableContributor = (contributor: Contributor) => {
     console.log('clicked contributor', contributor);
@@ -106,8 +105,7 @@ const Search: React.FC = () => {
         setCount(data.count);
 
         if (data.results) {
-          const merged: any[] = [...books, ...data.results];
-          setBooks(merged);
+          setBooks((b) => [...b, ...data.results]);
         }
 
         setLoading(false);
@@ -115,7 +113,7 @@ const Search: React.FC = () => {
     ;
   }, [context])
 
-  if (!context.query && books.length == 0) {
+  if (!context.query && books.length === 0) {
     return <h1>nothing found</h1>
   }
 

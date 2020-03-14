@@ -8,18 +8,15 @@ import Contributor from '../models/Contributor';
 import SearchFormInterface from '../models/SearchFormInterface'
 import SearchControl from '../components/Search/SearchControl';
 import BookCarousel from '../components/Book/BookCarousel';
-import BookItemList from '../components/Book/BookItemList';
 import Loader from '../components/Loader/Loader';
 import ClickableBook from '../types/ClickableBook';
 import ClickableContributor from '../types/ClickableContributor';
 import OnSearchCallback from '../types/OnSearchCallback';
-import Search from './Search';
 
 import taxonomies from '../mocks/taxonomies';
 
 const Home: React.FC = () => {
   const [popular, setPopular] = useState([]);
-  const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 

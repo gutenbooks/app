@@ -15,7 +15,7 @@ const BookShowPage: React.FC = () => {
         setBook(data);
       })
     ;
-  }, []);
+  }, [id]);
 
   if (!book) {
     return <h1>404</h1>;

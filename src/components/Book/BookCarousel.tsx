@@ -1,6 +1,5 @@
 import React from 'react';
 import Carousel from 'react-multi-carousel';
-import { Row, Col } from 'react-bootstrap';
 
 import BookItem from './BookItem';
 import Book from '../../models/Book';
