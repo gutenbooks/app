@@ -9,7 +9,7 @@ import SearchFormInterface from '../models/SearchFormInterface'
 import SearchControl from '../components/Search/SearchControl';
 import BookCarousel from '../components/Book/BookCarousel';
 import BookItemList from '../components/Book/BookItemList';
-import Loader from '../components/Loader';
+import Loader from '../components/Loader/Loader';
 import ClickableBook from '../types/ClickableBook';
 import ClickableContributor from '../types/ClickableContributor';
 import OnSearchCallback from '../types/OnSearchCallback';

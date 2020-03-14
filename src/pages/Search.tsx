@@ -9,7 +9,7 @@ import Contributor from '../models/Contributor';
 import SearchFormInterface from '../models/SearchFormInterface'
 import BookItemList from '../components/Book/BookItemList';
 import SearchControl from '../components/Search/SearchControl';
-import Loader from '../components/Loader';
+import Loader from '../components/Loader/Loader';
 import ClickableBook from '../types/ClickableBook';
 import ClickableContributor from '../types/ClickableContributor';
 import OnSearchCallback from '../types/OnSearchCallback';
@@ -140,7 +140,7 @@ const Search: React.FC = () => {
         { hasNext === true ?
           (
             <div className="text-center my-4">
-              <Loader isLoading={loading && context.page >= 1}>
+              <Loader isLoading={loading && context.page > 1}>
                 <Button
                   variant="outline-primary"
                   onClick={onLoadMore}
