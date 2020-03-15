@@ -22,7 +22,7 @@ const BookShowPage: React.FC = () => {
   }
 
   return (
-    <div className="container mt-4">
+    <div className="container">
       <BookShow book={book} />
     </div>
   );

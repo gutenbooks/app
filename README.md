@@ -1,4 +1,5 @@
 # gutenberg-org
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 A reimplementation of the Project Gutenberg content discovery mechanism utilizing React and http://gutendex.com/. This site can be demoed at https://gutenberg.netlify.com/.
 
@@ -11,6 +12,11 @@ Spin up the application:
 ```
 docker-compose up
 ```
+
+## Contributing
+
+1. Progress on the project is [tracked here](https://trello.com/b/s4beyzYG/gutenbergorg)
+1. This project uses Commitizen. Please format all your commits with it so we can generate a CHANGELOG easily.
 
 ## Release
 
