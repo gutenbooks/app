@@ -2,7 +2,6 @@ import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 
 import Book from '../../models/Book';
-import Contributor from '../../models/Contributor';
 import ContributionType from '../../models/ContributionType';
 
 interface BookShowInterface {
@@ -26,7 +25,7 @@ const BookShow: React.SFC<BookShowInterface> = ({ book }: BookShowInterface) => 
   return (
     <Row>
       <Col md={3}>
-        <img src={book.image} />
+        <img src={book.image} alt={book.title}/>
       </Col>
       <Col md={9}>
         <h1 className="mt-2">{book.title}</h1>
@@ -36,9 +35,9 @@ const BookShow: React.SFC<BookShowInterface> = ({ book }: BookShowInterface) => 
               const contrib = contribution.contributor;
               return (
                 <span key={contrib.name}>
-                  <a href="#">
+                  <button className="btn btn-link">
                     {contribution.contributor.name}
-                  </a>{ i < authors.length - 1? ', ' : '' }
+                  </button>{ i < authors.length - 1? ', ' : '' }
                 </span>
               )
             })

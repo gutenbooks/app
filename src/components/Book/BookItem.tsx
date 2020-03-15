@@ -40,29 +40,29 @@ const BookItem: React.SFC<BookItemInterface> = ({ book, onClickBook, onClickAuth
   const authors = getAuthors(book);
 
   return (
-    <>
-      <a href="#" onClick={handleClickBook(onClickBook, book)}>
-        <img src={book.image} />
+    <div className="text-center">
+      <button className="btn btn-link" onClick={handleClickBook(onClickBook, book)}>
+        <img src={book.image} alt={book.title} />
         <h6 className="mt-2">{book.title}</h6>
-      </a>
+      </button>
       <p className="small">
         By {
           authors.map((contribution, i) => {
             const contrib = contribution.contributor;
             return (
               <span key={contrib.name}>
-                <a
-                  href="#"
+                <button
+                  className="btn btn-link"
                   onClick={handleClickAuthor(onClickAuthor, contrib)}
                 >
                   {contribution.contributor.name}
-                </a>{ i < authors.length - 1? ', ' : '' }
+                </button>{ i < authors.length - 1? ', ' : '' }
               </span>
             )
           })
         }
       </p>
-    </>
+    </div>
   );
 }
 
