@@ -1,5 +1,6 @@
 import React from 'react';
 
+import BookImage from './BookImage';
 import Book from '../../models/Book';
 import Contributor from '../../models/Contributor';
 import ContributionType from '../../models/ContributionType';
@@ -42,7 +43,7 @@ const BookItem: React.SFC<BookItemInterface> = ({ book, onClickBook, onClickAuth
   return (
     <div className="text-center">
       <button className="btn btn-link" onClick={handleClickBook(onClickBook, book)}>
-        <img src={book.image} alt={book.title} />
+        <BookImage book={book} />
         <h6 className="mt-2">{book.title}</h6>
       </button>
       <p className="small">

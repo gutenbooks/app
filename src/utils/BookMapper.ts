@@ -29,7 +29,6 @@ const bookMapper = (b: any): Book => {
   return {
     id: b['id'],
     title: b['title'],
-    image: `https://www.gutenberg.org/cache/epub/${b['id']}/pg${b['id']}.cover.medium.jpg`,
     description: `foobar`,
     contributions: b['authors'] ? b['authors'].map(authorMapper) : [],
   } as Book;

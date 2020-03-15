@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 
+import BookImage from './BookImage';
 import Book from '../../models/Book';
 import ContributionType from '../../models/ContributionType';
 
@@ -25,7 +26,7 @@ const BookShow: React.SFC<BookShowInterface> = ({ book }: BookShowInterface) => 
   return (
     <Row>
       <Col md={3}>
-        <img src={book.image} alt={book.title}/>
+        <BookImage book={book} />
       </Col>
       <Col md={9}>
         <h1 className="mt-2">{book.title}</h1>
