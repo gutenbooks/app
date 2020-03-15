@@ -3,27 +3,29 @@ import { useParams } from 'react-router-dom';
 
 import ApiClient from '../utils/ApiClient';
 import BookShow from '../components/Book/BookShow';
+import Loader from '../components/Loader/Loader';
 
 const BookShowPage: React.FC = () => {
 
   const { id } = useParams();
   const [book, setBook] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true)
     ApiClient.get(`/books/${id}`)
       .then(({data}) => {
         setBook(data);
+        setLoading(false);
       })
     ;
   }, [id]);
 
-  if (!book) {
-    return <h1>404</h1>;
-  }
-
   return (
     <div className="container">
-      <BookShow book={book} />
+      <Loader isLoading={loading}>
+        <BookShow book={book} />
+      </Loader>
     </div>
   );
 }

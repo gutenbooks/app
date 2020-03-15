@@ -1,6 +1,9 @@
+
 interface SearchFormInterface {
-    query: string;
-    taxons?: number[];
+  query: string;
+  language: string;
+  taxons?: string[];
+  page?: number;
 }
 
 export default SearchFormInterface;

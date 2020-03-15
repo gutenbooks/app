@@ -5,16 +5,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faSlidersH } from '@fortawesome/free-solid-svg-icons'
 
 import Taxonomy from '../../models/Taxonomy';
+import { languages } from '../../models/Language';
 import OnSearchCallback from '../../types/OnSearchCallback';
+import SearchFormInterface from '../../models/SearchFormInterface'
 import SearchFacets from './SearchFacets';
 
 interface SearchControlInterface {
-  defaultQuery?: string;
+  defaultValues?: SearchFormInterface;
   taxonomies: Taxonomy[];
   onSearch: OnSearchCallback;
 }
 
-const SearchControl: React.SFC<SearchControlInterface> = ({defaultQuery, taxonomies, onSearch}) => {
+const defaultForm: SearchFormInterface = {
+  query: '',
+  taxons: [],
+  language: 'en',
+};
+
+const SearchControl: React.SFC<SearchControlInterface> = ({defaultValues = defaultForm, taxonomies, onSearch}) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -22,10 +30,7 @@ const SearchControl: React.SFC<SearchControlInterface> = ({defaultQuery, taxonom
       onSubmit={(values) => {
         onSearch(values)
       }}
-      initialValues={{
-        query: defaultQuery ? defaultQuery : '',
-        taxons: [],
-      }}
+      initialValues={defaultValues}
     >
       {({
         handleSubmit,
@@ -70,8 +75,10 @@ const SearchControl: React.SFC<SearchControlInterface> = ({defaultQuery, taxonom
             <Collapse in={open}>
               <Card.Body>
                <SearchFacets
-                taxonomies={taxonomies}
                 values={values}
+                handleChange={handleChange}
+                taxonomies={taxonomies}
+                languages={languages}
                />
              </Card.Body>
             </Collapse>

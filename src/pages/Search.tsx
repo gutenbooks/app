@@ -16,34 +16,20 @@ import OnSearchCallback from '../types/OnSearchCallback';
 
 import taxonomies from '../mocks/taxonomies';
 
-interface SearchContext {
-  page: number;
-  query: string;
-  taxons?: string[];
-}
-
 const Search: React.FC = () => {
 
-  const result = parseUrl(window.location.search);
-  const { query, taxons } = result.query;
-
-  let t: string[] = [];
-  if (taxons) {
-    t = taxons as string[];
-  }
-
   const history = useHistory();
-
-  const [context, setContext] = useState<SearchContext>({
-    page: 1,
-    query: query as string,
-    taxons: t,
-  });
-
+  const { query: { query, taxons, language } } = parseUrl(window.location.search);
   const [count, setCount] = useState();
   const [hasNext, setHasNext] = useState();
   const [books, setBooks] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
+  const [context, setContext] = useState<SearchFormInterface>({
+    page: 1,
+    query: query as string,
+    taxons: taxons ? taxons as string[] : [],
+    language: language ? language as string : 'en',
+  });
 
   if (!context.query) {
     console.log('No query specified, redirecting to home.');
@@ -71,24 +57,24 @@ const Search: React.FC = () => {
       page: 1,
       query: form.query,
       taxons: tx,
+      language: form.language,
     });
 
     // update the query params
+    const searchParams = form;
+    delete searchParams.page;
+
     history.push({
       pathname: '/search',
-      search: `?${stringify({
-        query: form.query,
-        taxons: tx,
-      })}`,
+      search: `?${stringify(searchParams)}`,
     });
   };
 
   const onLoadMore = (e: any) => {
     e.preventDefault();
-
     setContext({
       ...context,
-      page: context.page + 1,
+      page: context.page ? context.page + 1 : 1,
     });
   }
 
@@ -97,6 +83,7 @@ const Search: React.FC = () => {
     const params = stringify({
       page: context.page,
       search: context.query as string,
+      languages: context.language,
     });
 
     ApiClient.get(`/books/?${params}`)
@@ -120,7 +107,7 @@ const Search: React.FC = () => {
   return (
     <div className="container">
       <SearchControl
-        defaultQuery={context.query ? context.query as string : ''}
+        defaultValues={context}
         taxonomies={taxonomies}
         onSearch={onSearch}
       />
@@ -138,7 +125,7 @@ const Search: React.FC = () => {
         { hasNext === true ?
           (
             <div className="text-center my-4">
-              <Loader isLoading={loading && context.page > 1}>
+              <Loader isLoading={loading && !!context.page && context.page >= 1}>
                 <Button
                   variant="outline-primary"
                   onClick={onLoadMore}
