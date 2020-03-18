@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import Search from './pages/Search';
 import About from './pages/About';
@@ -48,6 +49,8 @@ const App: React.FC = () => {
              <About />
            </Route>
          </Switch>
+
+        <Footer />
      </Router>
   );
 }

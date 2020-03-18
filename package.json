@@ -32,9 +32,9 @@
     "yup": "^0.28.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "REACT_APP_VERSION=$(./bin/get-version) react-scripts start",
+    "build": "REACT_APP_VERSION=$(./bin/get-version) react-scripts build",
+    "test": "REACT_APP_VERSION=$(./bin/get-version) react-scripts test",
     "eject": "react-scripts eject",
     "version": "npm run changelog && git add CHANGELOG.md",
     "postversion": "git push && git push --tags",

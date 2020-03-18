@@ -1,0 +1,4 @@
+#!/usr/local/bin/node
+
+const version = require('../package.json').version;
+process.stdout.write(version)
