@@ -1,3 +1,12 @@
+# [1.0.0-beta.1](https://gitlab.com/epithet/gutenberg-org/compare/v1.0.0-beta.0...v1.0.0-beta.1) (2020-03-19)
+
+
+### Bug Fixes
+
+* **package.json:** fix issue with injecting app version at build time ([a0fe805](https://gitlab.com/epithet/gutenberg-org/commit/a0fe805603ff78700f49808f74a446f8b0372bf8))
+
+
+
 # [1.0.0-beta.0](https://gitlab.com/epithet/gutenberg-org/compare/v1.0.0-alpha.0...v1.0.0-beta.0) (2020-03-19)
 
 
