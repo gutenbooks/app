@@ -1,6 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import Book from '../../models/Book';
+
+// bound all images to 200x300px
+const ImageBoundingBox = styled.div`
+  width: 200px;
+  height: 300px;
+  margin: auto;
+`;
 
 export enum Size {
   Small = 'small',
@@ -18,15 +26,17 @@ const BookImage: React.SFC<BookImageProps> = ({ book, size=Size.Medium }: BookIm
     e.target.src = `https://via.placeholder.com/200x300`;
   };
 
-  let image = `https://www.gutenberg.org/cache/epub/`;
-  image += `${book.id}/pg${book.id}.cover.${size}.jpg`;
+  const image = `https://www.gutenberg.org/cache/epub/` +
+    `${book.id}/pg${book.id}.cover.${size}.jpg`;
 
   return (
-    <img
-      src={image}
-      alt={book.title}
-      onError={onError}
-    />
+    <ImageBoundingBox>
+      <img
+        src={image}
+        alt={book.title}
+        onError={onError}
+      />
+    </ImageBoundingBox>
   );
 }
 

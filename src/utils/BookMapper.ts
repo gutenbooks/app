@@ -61,9 +61,12 @@ const bookMapper = (b: any): Book => {
   //   "formats": <Format>,
   //   "download_count": <number>
   // }
+  const titleParts = b['title'].split(/[:;]/);
+
   return {
     id: b['id'],
-    title: b['title'],
+    title: titleParts[0].trim(),
+    subtitle: titleParts[1] ? titleParts[1].trim() : undefined,
     description: `foobar`,
     contributions: b['authors'] ? b['authors'].map(authorMapper) : [],
     formats: formatsMapper(b['formats']),

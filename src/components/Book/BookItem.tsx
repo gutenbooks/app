@@ -45,7 +45,12 @@ const BookItem: React.SFC<BookItemInterface> = ({ book, onClickBook, onClickAuth
     <div className="text-center mb-3">
       <button className="btn btn-link" onClick={handleClickBook(onClickBook, book)}>
         <BookImage book={book} />
-        <h6 className="mt-2">{book.title}</h6>
+        <h6 className="mt-2 d-block text-truncate" style={{maxWidth: '15rem'}}>
+          {book.title}
+        </h6>
+        <h6 className="mt-2 d-block text-truncate small" style={{maxWidth: '15rem'}}>
+          {book.subtitle ? book.subtitle : (<>&nbsp;</>) }
+        </h6>
       </button>
       <p className="small">
         By {
