@@ -6,6 +6,7 @@ services:
       command: npm start
       environment:
         - REACT_APP_API_DOMAIN=https://gutendex.com/
+        - REACT_APP_GA_TRACKING_ID=UA-161511207-1
       volumes:
         - ./bin:/app/bin
         - ./src:/app/src

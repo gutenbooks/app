@@ -69,7 +69,7 @@ const BookItem: React.SFC<BookItemInterface> = ({ book, onClickBook, onClickAuth
           })
         }
       </p>
-      <BookFormats id={book.id} formats={book.formats} />
+      <BookFormats id={book.id} title={book.title} formats={book.formats} />
     </div>
   );
 }

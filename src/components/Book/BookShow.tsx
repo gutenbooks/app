@@ -46,7 +46,7 @@ const BookShow: React.SFC<BookShowInterface> = ({ book }: BookShowInterface) => 
           }
         </p>
 
-        <BookFormats id={book.id} formats={book.formats} />
+        <BookFormats id={book.id} title={book.title} formats={book.formats} />
       </Col>
       <Col xs={12} className="mt-4">
         <p>

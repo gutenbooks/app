@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 
+import withTracker from './components/withTracker';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Search from './pages/Search';
@@ -36,18 +37,10 @@ const App: React.FC = () => {
            of them to render at a time
          */}
          <Switch>
-           <Route exact path="/">
-             <Home />
-           </Route>
-           <Route exact path="/books/:id">
-             <BookShow />
-           </Route>
-           <Route path="/search">
-             <Search />
-           </Route>
-           <Route path="/about">
-             <About />
-           </Route>
+           <Route exact path="/" component={withTracker(Home)} />
+           <Route exact path="/books/:id" component={withTracker(BookShow)} />
+           <Route path="/search" component={withTracker(Search)} />
+           <Route path="/about" component={withTracker(About)} />
          </Switch>
 
         <Footer />
