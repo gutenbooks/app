@@ -7,6 +7,7 @@ import {
 import { Navbar, Nav } from 'react-bootstrap';
 
 import withTracker from './components/withTracker';
+import Brand from './components/Brand';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Search from './pages/Search';
@@ -19,7 +20,7 @@ const App: React.FC = () => {
        <Navbar bg="light" expand="lg" className="mb-3">
           <div className="container">
             <Navbar.Brand href="/">
-              <span className="font-weight-light">guten</span><span className="font-weight-bold">books</span>
+              <Brand/>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
