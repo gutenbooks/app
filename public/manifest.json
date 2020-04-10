@@ -3,14 +3,14 @@
   "name": "Gutenbooks Web App",
   "icons": [
     {
-      "src": "logo230.png",
+      "src": "logo210.png",
       "type": "image/png",
-      "sizes": "230x230"
+      "sizes": "210x210"
     },
     {
-      "src": "logo560.png",
+      "src": "logo546.png",
       "type": "image/png",
-      "sizes": "560x560"
+      "sizes": "546x546"
     }
   ],
   "start_url": ".",
