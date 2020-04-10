@@ -3,7 +3,7 @@ import bookMapper from './BookMapper';
 
 // global axios config
 const config = {
-  baseURL: 'https://gutendex.com/',
+  baseURL: process.env.REACT_APP_API_DOMAIN,
   headers: {
     // 'Accepts': 'application/json',
     post: { 'Content-Type': 'application/json' },

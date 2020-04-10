@@ -1,4 +1,4 @@
-# gutenberg-org
+# gutenbooks
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 A reimplementation of the Project Gutenberg content discovery mechanism utilizing React and http://gutendex.com/. This site can be demoed at https://gutenberg.netlify.com/.
