@@ -1,9 +1,14 @@
 import axios, { AxiosRequestConfig, AxiosInstance } from 'axios';
 import bookMapper from './BookMapper';
 
+let baseURL = 'https://api.gutenbooks.com/';
+if (process.env.REACT_APP_API_DOMAIN) {
+  baseURL = process.env.REACT_APP_API_DOMAIN;
+}
+
 // global axios config
 const config = {
-  baseURL: process.env.REACT_APP_API_DOMAIN,
+  baseURL,
   headers: {
     // 'Accepts': 'application/json',
     post: { 'Content-Type': 'application/json' },
