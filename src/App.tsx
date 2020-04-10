@@ -19,10 +19,7 @@ const App: React.FC = () => {
        <Navbar bg="light" expand="lg" className="mb-3">
           <div className="container">
             <Navbar.Brand href="/">
-              <img
-                style={{maxWidth: '40px'}}
-                src={`/logoBorder560.png`} alt="logo"
-              />
+              <span className="font-weight-light">guten</span><span className="font-weight-bold">books</span>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
