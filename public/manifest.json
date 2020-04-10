@@ -1,21 +1,16 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Gutenbooks",
+  "name": "Gutenbooks Web App",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "logo230.png",
+      "type": "image/png",
+      "sizes": "230x230"
     },
     {
-      "src": "logo192.png",
+      "src": "logo560.png",
       "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "560x560"
     }
   ],
   "start_url": ".",
